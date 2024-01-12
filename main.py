@@ -13,16 +13,18 @@ dp = Dispatcher()
 
 @dp.message( CommandStart() )
 async def handle_start(message: types.Message):
-    await message.answer( (f"Hello, {message.from_user.full_name}.\n"
-                           f"Let's begin!") )
+    await message.answer( (f"Hi,\n"
+                           f"{message.from_user.full_name}.\n"
+                           f"Welcome to my bot.\n"
+                           f"in this bot i will say everything you say. lets start...:)") )
 
 
 @dp.message()
-async def replay_as_echo(message: types.Message):
+async def return_any_message_back(message: types.Message):
     try:
-        await message.send_copy( chat_id=message.chat.id )  # 432654152
+        await message.send_copy( chat_id=message.chat.id )
     except TypeError:
-        await message.reply( text="sorry i get an error, please try again." )
+        await message.reply( text="oops i get an error, please try again." )
 
 
 async def main():
